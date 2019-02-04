@@ -1,0 +1,98 @@
+﻿<Window x:Class="Converter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Converter"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="450" 
+        Width="800"
+        Background="Green">
+    <Window.Resources>
+        <Style x:Key=":InputLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+        </Style>
+        <ControlTemplate 
+            x:Key="RoundTextboxCornterTemplate" 
+            TargetType="{x:Type TextBoxBase}">
+            <Border 
+                Background="{TemplateBinding Background}"   
+                x:Name="Bd" 
+                BorderBrush="Black"  
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                CornerRadius="5">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label
+            Content="Feet"
+            Style="{StaticResource :InputLabelStyle}"/>
+        <TextBox
+            x:Name="TextBox_Feet"
+            Grid.Column="1"
+            Style="{StaticResource InputTextBoxStyle}"
+            Template="{StaticResource RoundTextboxCornterTemplate}"/>
+        <Label
+            Grid.Row="1"
+            Content="Meters"
+            Style="{StaticResource :InputLabelStyle}"/>
+        <TextBox
+            x:Name="TextBox_Meters"
+            Grid.Column="1"
+            Grid.Row="1"
+            Style="{StaticResource InputTextBoxStyle}"
+            Template="{StaticResource RoundTextboxCornterTemplate}"/>
+        <Button
+            x:Name="Button_Meters"
+            Grid.Row="2"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Height="50"
+            Width="150"
+            Content="Convert to Meters"
+            FontSize="15"
+            Margin="0,0,10,0" Click="Button_Meters_Click"/>
+        <Button
+            x:Name="Button_Feet"
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Height="50"
+            Width="150"
+            Content="Convert to Feet"
+            FontSize="15"
+            Margin="10,0,0,0" Click="Button_Feet_Click"/>
+    </Grid>
+</Window>
